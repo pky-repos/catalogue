@@ -34,6 +34,7 @@ For host = localhost
     Method : POST 
     Request URL : http://localhost:3000/api/add_product
     Body : 
+
         Example 1 :
             {
                 "name": "The Alchemist",
@@ -72,6 +73,7 @@ For host = localhost
     Method : POST 
     Request URL : http://localhost:3000/api/update_product
     Body : 
+    
         Example 1 :
             {
                 "name": "The Alchemist",
