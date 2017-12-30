@@ -8,6 +8,7 @@ For host = localhost
     Method : POST 
     Request URL : http://localhost:3000/api/add_category
     Body : 
+    
         Example 1 :
             {
                 "name": "book",
@@ -73,7 +74,7 @@ For host = localhost
     Method : POST 
     Request URL : http://localhost:3000/api/update_product
     Body : 
-    
+
         Example 1 :
             {
                 "name": "The Alchemist",
