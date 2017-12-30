@@ -95,7 +95,7 @@ module.exports.addCategory = addCategory;
 //recursively fetch categories document from 'category' collection
 //This uses the Schema Middleware 
 getCategories = function(cb){
-    Category.find({name: 'book'}, cb);
+    Category.find({}, cb);
 }
 
 module.exports.getCategories = getCategories;
