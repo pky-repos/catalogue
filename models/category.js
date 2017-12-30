@@ -33,8 +33,8 @@ module.exports.Category = Category;
 
 //If category exists in the 'category' collection or not
 categoryExists = function(category, cb){
-    Category.find({name: category.name}, function(err, c){
-        if(c.length) {
+    Category.find({name: category.name}, function(err, categories){
+        if(categories.length) {
             cb(true);
         } else {
             cb(false);
@@ -46,8 +46,10 @@ categoryExists = function(category, cb){
 addChildCategory = function(category, cb) {
     categoryExists(category, function(exists){
         if (exists){
-            Category.findOne({name: category.name}, function(e, cat){
-                cb(cat._id);
+            Category.findOne({name: category.name}, function(err, categoryObj){
+                if (err)
+                    return err;
+                cb(categoryObj._id);
                 return;
             });
         } else {
@@ -76,11 +78,11 @@ addCategory = function(category, cb){
                     if(exists){
                         Category.update({name: category.name}, category, cb);
                     } else {
-                        Category.create(category, cb).then((err, c) => {
+                        Category.create(category, cb).then((err, newCategory) => {
                             if(err){
                                 return err;
                             }
-                            return c;
+                            return newCategory;
                         });
                     }
                 });

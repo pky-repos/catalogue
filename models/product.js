@@ -29,8 +29,8 @@ const Product = mongoose.model('product', productSchema);
 module.exports.Product = Product;
 
 productExists = function(product, cb){
-    Product.find({name: product.name}, function(err, c){
-        if(c.length) {
+    Product.find({name: product.name}, function(err, products){
+        if(products.length) {
             cb(true);
         } else {
             cb(false);
@@ -43,8 +43,10 @@ addChildProduct = function(product, cb) {
 
     productExists(product, function(exists){
         if (exists){
-            Product.findOne({name: product.name}, function(e, cat){
-                cb(cat);
+            Product.findOne({name: product.name}, function(err, productObj){
+                if (err)
+                    return err;
+                cb(productObj);
                 return;
             });
         } else {
@@ -58,7 +60,7 @@ addChildProduct = function(product, cb) {
 
 
 addProduct = function(product, cb){
-    
+
     let associatedCategoryProcessed = 0;
 
     product.categories.forEach((item, index, array) => {
@@ -71,11 +73,11 @@ addProduct = function(product, cb){
                     if(exists){
                         Product.update({name: product.name}, product, cb);
                     } else {
-                        Product.create(product, cb).then((err, c) => {
+                        Product.create(product, cb).then((err, newProduct) => {
                             if(err){
                                 return err;
                             }
-                            return c;
+                            return newProduct;
                         });
                     }
                 });
