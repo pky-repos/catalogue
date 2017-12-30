@@ -6,9 +6,11 @@ For host = localhost
 1. Add a category :
 
     Method : POST 
+
     Request URL : http://localhost:3000/api/add_category
+
     Body : 
-    
+
         Example 1 :
             {
                 "name": "book",
@@ -33,7 +35,9 @@ For host = localhost
 2. Add Product mapped to a category or categories :
 
     Method : POST 
+
     Request URL : http://localhost:3000/api/add_product
+
     Body : 
 
         Example 1 :
@@ -63,16 +67,20 @@ For host = localhost
 3. Get all categories with all its child categories mapped to it :
 
     Method : GET 
+
     Request URL : http://localhost:3000/api/get_categories
 
 4. Get all products by a category : 
     Method : GET 
+
     Request URL : http://localhost:3000/api/get_category_products/fiction
 
 5. Update product details :
 
     Method : POST 
+
     Request URL : http://localhost:3000/api/update_product
+    
     Body : 
 
         Example 1 :
